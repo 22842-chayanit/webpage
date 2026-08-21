@@ -1,0 +1,986 @@
+/* ========================================
+   MY PORTFOLIO
+   Modern Student Portfolio
+   HTML5 + CSS3
+======================================== */
+
+/* ========================================
+   1. VARIABLES
+======================================== */
+
+:root {
+    --blue-dark: #0D47A1;
+    --blue: #1976D2;
+    --blue-light: #42A5F5;
+    --blue-soft: #90CAF9;
+    --blue-pale: #E3F2FD;
+
+    --white: #FFFFFF;
+    --off-white: #F8FBFF;
+
+    --text-dark: #102A43;
+    --text: #486581;
+    --text-light: #829AB1;
+
+    --border: #D9EAF7;
+
+    --shadow-sm: 0 8px 24px rgba(13, 71, 161, 0.08);
+    --shadow-md: 0 16px 40px rgba(13, 71, 161, 0.12);
+    --shadow-lg: 0 24px 60px rgba(13, 71, 161, 0.16);
+
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 30px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* ========================================
+   2. RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--white);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ========================================
+   3. GLOBAL
+======================================== */
+
+.container {
+    width: min(1120px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 14px;
+
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+.section-label.light {
+    color: var(--blue-soft);
+}
+
+.section-heading {
+    margin-bottom: 55px;
+}
+
+.section-heading.centered {
+    text-align: center;
+    max-width: 700px;
+    margin-inline: auto;
+    margin-bottom: 55px;
+}
+
+.section-heading h2,
+.about-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.section-heading h2 span,
+.about-heading h2 span {
+    color: var(--blue);
+}
+
+.section-heading p {
+    color: var(--text);
+}
+
+
+/* ========================================
+   4. NAVIGATION
+======================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    padding: 14px 0;
+
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(217, 234, 247, 0.8);
+}
+
+.navbar {
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1.05rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo > span:last-child > span {
+    color: var(--blue);
+}
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--white);
+    background: linear-gradient(
+        135deg,
+        var(--blue-dark),
+        var(--blue-light)
+    );
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 20px rgba(25, 118, 210, 0.25);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px;
+
+    background: rgba(227, 242, 253, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.nav-links a {
+    position: relative;
+
+    padding: 9px 14px;
+
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 650;
+
+    border-radius: 10px;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--blue-dark);
+    background: var(--white);
+    transform: translateY(-1px);
+}
+
+.nav-links a.active {
+    color: var(--white);
+    background: var(--blue);
+    box-shadow: 0 5px 14px rgba(25, 118, 210, 0.22);
+}
+
+
+/* ========================================
+   5. BUTTONS
+======================================== */
+
+.btn {
+    min-height: 50px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 12px 21px;
+
+    border-radius: 13px;
+
+    font-size: 0.92rem;
+    font-weight: 750;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    color: var(--white);
+    background: linear-gradient(
+        135deg,
+        var(--blue-dark),
+        var(--blue)
+    );
+
+    box-shadow:
+        0 12px 25px rgba(25, 118, 210, 0.25);
+}
+
+.btn-primary:hover {
+    box-shadow:
+        0 16px 32px rgba(25, 118, 210, 0.34);
+}
+
+.btn-secondary {
+    color: var(--blue-dark);
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background: var(--blue-pale);
+}
+
+.btn-white {
+    color: var(--blue-dark);
+    background: var(--white);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-white:hover {
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ========================================
+   6. HERO
+======================================== */
+
+.hero {
+    position: relative;
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(144, 202, 249, 0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #FFFFFF 0%,
+            #F4FAFF 55%,
+            #E3F2FD 100%
+        );
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 70px;
+
+    padding: 80px 0;
+}
+
+.hero-content {
+    animation: slideUp 0.8s ease both;
+}
+
+.eyebrow {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 22px;
+    padding: 7px 12px;
+
+    color: var(--blue-dark);
+    background: rgba(255, 255, 255, 0.75);
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    background: #2ECC71;
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 5px rgba(46, 204, 113, 0.12);
+}
+
+.hero-small-title {
+    margin-bottom: 5px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+
+    color: var(--text-dark);
+
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.hero h1 span,
+.hero h1 strong {
+    display: block;
+}
+
+.hero h1 span {
+    color: var(--blue-dark);
+}
+
+.hero h1 strong {
+    color: var(--blue);
+    font-weight: 850;
+}
+
+.hero-description {
+    max-width: 600px;
+
+    margin-bottom: 30px;
+
+    color: var(--text);
+
+    font-size: 1.05rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-highlights {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    margin-top: 50px;
+}
+
+.hero-highlights div:not(.highlight-line) {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-highlights strong {
+    color: var(--blue-dark);
+    font-size: 0.95rem;
+}
+
+.hero-highlights span {
+    color: var(--text-light);
+    font-size: 0.72rem;
+}
+
+.highlight-line {
+    width: 1px;
+    height: 35px;
+    background: var(--border);
+}
+
+
+/* ========================================
+   7. HERO VISUAL
+======================================== */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 520px;
+
+    display: grid;
+    place-items: center;
+
+    animation: fadeIn 1s 0.2s ease both;
+}
+
+.profile-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(370px, 80%);
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 35px;
+
+    box-shadow: var(--shadow-lg);
+
+    transform: rotate(2deg);
+
+    transition: transform 0.5s ease;
+}
+
+.profile-card:hover {
+    transform: rotate(0deg) translateY(-8px);
+}
+
+.profile-image-wrapper {
+    overflow: hidden;
+    border-radius: 26px;
+}
+
+.profile-image {
+    width: 100%;
+    aspect-ratio: 5 / 6;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.profile-card:hover .profile-image {
+    transform: scale(1.04);
+}
+
+.profile-orbit {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border: 1px dashed var(--blue-soft);
+    border-radius: 50%;
+
+    animation: spin 25s linear infinite;
+}
+
+.profile-orbit::before,
+.profile-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    background: var(--blue-light);
+    border: 4px solid var(--white);
+    border-radius: 50%;
+}
+
+.profile-orbit::before {
+    top: 25px;
+    right: 50px;
+}
+
+.profile-orbit::after {
+    bottom: 50px;
+    left: 20px;
+    background: var(--blue-dark);
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 15px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    box-shadow: var(--shadow-md);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-card-top {
+    top: 50px;
+    right: -30px;
+}
+
+.floating-card-bottom {
+    bottom: 50px;
+    left: -30px;
+
+    animation-delay: -2s;
+}
+
+.floating-icon {
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--blue-pale);
+    border-radius: 10px;
+}
+
+.floating-card strong,
+.floating-card small {
+    display: block;
+}
+
+.floating-card strong {
+    color: var(--text-dark);
+    font-size: 0.8rem;
+}
+
+.floating-card small {
+    color: var(--text-light);
+    font-size: 0.65rem;
+}
+
+.hero-decoration {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-circle-one {
+    width: 180px;
+    height: 180px;
+
+    top: 70px;
+    left: -80px;
+
+    background: rgba(144, 202, 249, 0.2);
+}
+
+.hero-circle-two {
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    bottom: -100px;
+
+    background: rgba(66, 165, 245, 0.1);
+}
+
+
+/* ========================================
+   8. FEATURE SECTION
+======================================== */
+
+.intro-section {
+    background: var(--white);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 30px;
+
+    background: var(--off-white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--blue-soft);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-main {
+    background:
+        linear-gradient(
+            145deg,
+            #0D47A1,
+            #1976D2
+        );
+
+    color: var(--white);
+}
+
+.feature-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 35px;
+
+    background: var(--white);
+    border-radius: 16px;
+
+    font-size: 1.5rem;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.feature-main p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-number {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    color: rgba(13, 71, 161, 0.14);
+
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.feature-main .card-number {
+    color: rgba(255, 255, 255, 0.14);
+}
+
+.text-link {
+    position: absolute;
+    bottom: 28px;
+    left: 30px;
+
+    color: var(--blue);
+    font-size: 0.84rem;
+    font-weight: 800;
+}
+
+.feature-main .text-link {
+    color: var(--white);
+}
+
+
+/* ========================================
+   9. QUOTE
+======================================== */
+
+.quote-section {
+    padding: 80px 0;
+
+    background: var(--blue-pale);
+}
+
+.quote-box {
+    position: relative;
+
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.quote-mark {
+    position: absolute;
+
+    top: -30px;
+    left: 50%;
+
+    color: var(--blue-soft);
+
+    font-family: Georgia, serif;
+    font-size: 6rem;
+    line-height: 1;
+
+    transform: translateX(-50%);
+}
+
+.quote-box p {
+    position: relative;
+
+    max-width: 700px;
+    margin: auto;
+
+    color: var(--blue-dark);
+
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.quote-author {
+    display: block;
+    margin-top: 18px;
+
+    color: var(--text-light);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   10. PAGE HERO
+======================================== */
+
+.page-hero {
+    position: relative;
+
+    padding: 90px 0 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(66, 165, 245, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #F8FBFF,
+            #E3F2FD
+        );
+}
+
+.page-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -120px;
+    bottom: -180px;
+
+    border: 50px solid rgba(144, 202, 249, 0.15);
+    border-radius: 50%;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero h1 {
+    margin-bottom: 18px;
+
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.page-hero h1 span {
+    color: var(--blue);
+}
+
+.page-hero p {
+    max-width: 650px;
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+
+/* ========================================
+   11. PROFILE
+======================================== */
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.large-profile-image {
+    position: relative;
+}
+
+.large-profile-image img {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    aspect-ratio: 6 / 7;
+
+    object-fit: cover;
+
+    border-radius: 30px;
+    box-shadow: var(--shadow-lg);
+}
+
+.image-decoration {
+    position: absolute;
+    z-index: 1;
+
+    width: 80%;
+    height: 80%;
+
+    top: -25px;
+    left: -25px;
+
+    border: 3px solid var(--blue-soft);
+    border-radius: 30px;
+}
+
+.image-caption {
+    position: absolute;
+    z-index: 3;
+
+    right: -25px;
+    bottom: 30px;
+
+    padding: 15px 20px;
+
+    background: var(--white);
+
+    border-radius: 16px;
+
+    box-shadow: var(--shadow-md);
+}
+
+.image-caption span,
+.image-caption strong {
+    display: block;
+}
+
+.image-caption span {
+    color: var(--blue);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.image-caption strong {
+    color: var(--text-dark);
+}
+
+.profile-details h2 {
+    margin-bottom: 15px;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+}
+
+.profile-details h2 span {
+    color: var(--blue);
+}
+
+.lead-text {
+    max-width: 650px;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px;
+
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition: var(--transition);
+}
+
+.info-box:hover {
+    background: var(--white);
+    border-color: var(--blue-soft);
+    transform: translateY(-3px);
